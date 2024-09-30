@@ -1,0 +1,90 @@
+% !TEX TS-program = lualatex
+% !TEX encoding = UTF-8
+
+\documentclass[psalterium-tridentinum.tex]{subfiles}
+
+\ifcsname preamble@file\endcsname
+  \setcounter{page}{\getpagerefnumber{M-pt01_prolegomena}}
+\fi
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\null\vspace{5mm}
+{\Large\sc{}Nocturnale Romanum}
+
+\vspace{5mm}
+
+{\large\sc{}Tomus IIt}
+
+\vspace{3.5cm}
+
+{\Huge{}PSALTERIUM}
+
+\vspace{1cm}
+
+{\Large\sc{}pro nocturnis horis\\in dominicis, feriis et festis minoribus}
+
+\vspace{5mm}
+
+{\large\sc{}secundum ordinem Divini Officii\\a Pio pp V restituti}
+
+\vspace{5mm}
+
+{\large\sc{}cum Antiphonis, Invitatoriis et Hymnis\\in cantu gregoriano}
+
+\vspace{3.5cm}
+
+{\large\sc{}instrumentum laboris}
+
+\vfill
+
+MMXXV
+
+\end{center}
+\end{titlepage}
+
+\feast{OR}{Prolegomena}
+	{Prolegomena}{Prolegomena}{2}{}{}{}{}{}{}
+\thispagestyle{empty}
+\addcontentsline{toc}{section}{Prolegomena}
+
+\begin{english}
+	
+\intermediatetitle{From the dawn of History}
+
+{\setlength{\parindent}{5mm}\small
+
+TODO
+
+}
+
+\end{english}
+
+\intermediatetitle{Depuis l'aube de l'Histoire}
+
+{\setlength{\parindent}{5mm}\small
+
+TODO
+
+}
+
+\vfill
+
+\intermediatetitle{Tabella neumatum}
+
+{\gresetnabc{1}{visible}
+\gresetclef{invisible}
+\gresetinitiallines{0}
+\gregorioscore{\subfix{nocturnale-romanum/gabc/neumata}}
+}
+
+\vfill
+
+\cleardoublepage
+
+% TODO : credit Alan Liang, d. Jakob Moussong
+
+
+\end{document}

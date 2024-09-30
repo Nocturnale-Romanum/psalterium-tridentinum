@@ -1,0 +1,30 @@
+% !TEX TS-program = lualatex
+% !TEX encoding = UTF-8
+
+\documentclass[11pt, twoside, french, openany]{book}
+
+\input{common_headers}
+\externaldocument[M-]{\subfix{psalterium-tridentinum}}
+
+\begin{document}
+
+\customsubfile{pt01_prolegomena}
+\customsubfile{pt10_temporale}
+\customsubfile{pt20_psalterium_ordinarium}
+\customsubfile{pd21_psalterium_hebdomada}
+\customsubfile{pd30_communia}
+\customsubfile{pd40_sanctorale}
+
+\newpage
+\addcontentsline{toc}{chapter}{Indices}
+\cprintindex{I}{Index Invitatoriorum}
+\newpage
+\cprintindex{H}{Index Hymnorum}
+\cprintindex{A}{Index Antiphonarum}
+\cprintindex{F}{Index Festorum}
+\renewcommand\contentsname{Index Generalis}
+\tableofcontents
+\thispagestyle{empty}
+
+\end{document}
+
