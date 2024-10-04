@@ -102,6 +102,8 @@ headsep=3mm,
 \sloppy
 
 %%%%%%%%%%%%%%% GREGORIO CONFIG %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% BEWARE! THIS PART OF THE FILE IS HEAVILY MODIFIED FOR THE TRIDENTINE PSALTER
+%%%%%%%%%%%%%%% IT PRINTS ALL ANTIPHONS WITHOUT EUOUAE BECAUSE THEY ARE ONLY FOR INCIPITS IN THE FERIAL OFFICE
 
 \usepackage[forcecompile]{gregoriotex}
 
@@ -132,7 +134,7 @@ headsep=3mm,
 \grechangedim{maxbaroffsettextright}{0.5mm}{scalable}
 
 %% in case we show NABC, font selection
-\gresetnabcfont{gresgmodern}{12} 
+\gresetnabcfont{gregall}{9} 
 
 %% \officepartannotation converts a letter (IHARPT) into the office part to be printed as annotation,
 %% storing the result into \result.
@@ -258,9 +260,17 @@ end
 }
 \makeatother
 
-%%% We select if we want to show NABC. Here, we don't.
+\newcommand{\postpsalmantiphon}[5][y]{
+	\gscore[n]{#2_noeuouae}{#3}{#4}{#5}
+}
 
-\gresetnabc{1}{invisible}
+\newcommand{\scoreincipit}[3]{
+	\gscore{#1_incipit}{#2}{#3}{}
+}
+
+%%% We select if we want to show NABC. Here, we do.
+
+\gresetnabc{1}{visible}
 \gresetnabc{2}{invisible}
 
 %%%%%%%%%%%%%%% FONTS %%%%%%%%%%%%%%%
@@ -370,6 +380,12 @@ end
 \newcommand{\rubricdoublefeasts}{\rubric{Tonus festivus:}}
 \newcommand{\rubricsolemnfeasts}{\rubric{Tonus solemnis:}}
 \newcommand{\rubrictp}{\rubric{Tempore Paschali:}}
+\newcommand{\perannumrubric}{\rubric{Per Annum:}}
+\let\tprubric\rubrictp
+\newcommand{\quadrubric}{\rubric{In Quadragesima:}}
+\newcommand{\passrubric}{\rubric{Tempore Passionis:}}
+\newcommand{\adventrubric}{\rubric{In Adventu:}}
+\newcommand{\nonrepetiturrubric}{\rubric{Et non repetitur in Psalmo.}}
 
 %% Macro to print a separator
 
@@ -415,6 +431,10 @@ end
 	\index[P]{#2 (mode #3)}
 	\smalltitle{Psalmus #2}
 	\twocolitemized{nocturnale-romanum/psalmi/#2_#3.tex}%
+}
+
+\newcommand{\unpointedpsalm}[1]{
+    \psalmus{#1}{}
 }
 
 %% Macro to print a psalm on two columns with the title "in tono N"
