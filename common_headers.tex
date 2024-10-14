@@ -262,7 +262,16 @@ end
 \makeatother
 
 \newcommand{\postpsalmantiphon}[5][y]{
-	\gscore[n]{#2_noeuouae}{#3}{#4}{#5}
+    %% we temporarily disable mode annotation and replace it with the first line of "anti-phona"
+	%% we temporarily redefine the A->Ant correspondence so that it displays the second lien of "anti-phona"
+	\gresetheadercapture{mode}{}{string}
+	{
+		\greannotation{\hspace{-3mm}Anti-}
+		\renewcommand{\officepartannotation}[1]{phona}
+		%% we output the score without the antiphon number
+		\gscore[#1]{#2_noeuouae}{#3}{}{#5}
+	}
+	\gresetheadercapture{mode}{modeannotation}{string}
 }
 
 \newcommand{\scoreincipit}[3]{

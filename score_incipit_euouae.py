@@ -38,6 +38,15 @@ def euouae_before_gabc(gabc):
   antiphon = ")".join(parts)
   return "\n"+clef+euouae+antiphon
 
+def custos_before_gabc(gabc):
+  """from some gabc code, takes the last note of the EUOUAE at the end and puts it in front as custos"""
+  lastnote = gabc.split("<eu>")[1].split("(::)")[0].split(")")[-2][-1]
+  antiphon = gabc.split("<eu>")[0]
+  parts = antiphon.split(")")
+  clef = parts[0]+") "
+  del parts[0]
+  antiphon = ")".join(parts)
+  return "\n" + clef + "~({}+) ".format(lastnote) + antiphon
 
 def modify_gabc_file(source_name, target_name, function):
   """isolates the gabc from a gabc file, transforms it according to <function>, 
@@ -59,6 +68,6 @@ files = [f for f in files if f.endswith("A.gabc") or f.endswith("A1.gabc") or f.
 for f in files:
   try:
     modify_gabc_file(f, f.split(".gabc")[0]+"_incipit.gabc", incipit_from_gabc)
-    modify_gabc_file(f, f.split(".gabc")[0]+"_noeuouae.gabc", euouae_before_gabc)
+    modify_gabc_file(f, f.split(".gabc")[0]+"_noeuouae.gabc", custos_before_gabc)
   except:
     print(f)
