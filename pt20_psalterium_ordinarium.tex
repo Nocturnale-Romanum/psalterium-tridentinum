@@ -7,7 +7,10 @@
   \setcounter{page}{\getpagerefnumber{M-pt20_psalterium_ordinarium}}
 \fi
 
-\begin{document}
+\begin{document} %% THIS SUBFILE BEGINS ON A LEFT, EVEN PAGE
+
+\null\thispagestyle{empty}\newpage %% REMOVE THIS IF THIS SUBFILE BEGINS ON A RIGHT, ODD PAGE
+
 \feast{OR}{Ordinarium Divini Offici\\ ad Matutinum}
 	{Ordinarium}{Ordinarium}{1}{}{}{}{}{}{}
 \addcontentsline{toc}{chapter}{Ordinarium Divini Officii ad Matutinum}
