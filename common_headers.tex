@@ -164,6 +164,9 @@ headsep=3mm,
 \newcommand{\piecenamebuffer}{}
 \newcommand{\modeannotation}[1]{
   \greannotation{\hspace{\defaultannotationshift}#1}
+  \modeindexing{#1}
+}
+\newcommand{\modeindexing}[1]{
   \ifblank{\piecenamebuffer}{}{% if the indexed name of the piece is not given, no indexation effort is made
     \ifthenelse{\equal{I}{\indexnamebuffer}}{
       \index[\indexnamebuffer]{{\piecenamebuffer}@#1 & \piecenamebuffer}
@@ -180,6 +183,7 @@ headsep=3mm,
     }
   }
 }
+
 \gresetheadercapture{mode}{modeannotation}{string}
 
 %% outputs a score with no label, indexing, initials or annotations
@@ -263,8 +267,9 @@ end
 
 \newcommand{\postpsalmantiphon}[5][y]{
     %% we temporarily disable mode annotation and replace it with the first line of "anti-phona"
+	%% however, we keep mode header capture for indexation purposes
 	%% we temporarily redefine the A->Ant correspondence so that it displays the second lien of "anti-phona"
-	\gresetheadercapture{mode}{}{string}
+	\gresetheadercapture{mode}{modeindexing}{string}
 	{
 		\greannotation{\hspace{-3mm}Anti-}
 		\renewcommand{\officepartannotation}[1]{phona}
